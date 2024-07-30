@@ -25,3 +25,11 @@ function display_product_categories_in_loop() {
     
 }
 add_action('woocommerce_before_shop_loop_item', 'display_product_categories_in_loop', 15);
+
+
+// Remove the reviews tab from the WooCommerce product pages
+add_filter( 'woocommerce_product_tabs', 'remove_reviews_tab', 98 );
+function remove_reviews_tab($tabs) {
+    unset($tabs['reviews']); // Remove the reviews tab
+    return $tabs;
+}
